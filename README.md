@@ -1,14 +1,18 @@
-## Problem
-Using the smartphone's accelerometer inside an elevator, we want to estimate the speed and the height travelled. 
 
-## Load libraries
+## Problem
+
+Using the smartphone's accelerometer inside an elevator, we want to estimate the speed and the height travelled.
+
 
 ```python
+# Load libraries
+
 %pylab inline
 import pandas as pd
 from scipy import integrate
 import numpy as np
 ```
+
 
 ## Read the data
 
@@ -32,7 +36,7 @@ az = az.as_matrix()
 
 ## Clean the time series
 
-The time span of the recorded time series is a bit longer than desired. It registered the movement of the experimenter hand while setting the phone on the floor of the lift, as well as the recovery of it. We want to cut off these chunks of the time series.
+The time span of the recorded time series is a bit longer than desired. It registered the movement of the experimenter hand while setting the phone on the floor of the elevator, as well as the recovery of it. We want to cut off these chunks of the time series.
 
 
 ```python
@@ -46,7 +50,7 @@ indices = [0, 200, 1700, ts.size]
 ts_init = ts[indices[0]:indices[1]]
 az_init = az[indices[0]:indices[1]]
 
-# The really interesting time series: while the phone is on the floor and the only registered movement is the lift's
+# The really interesting time series: while the phone is on the floor and the only registered movement is the elevator's
 ts_experiment = ts[indices[1]:indices[2]]
 az_experiment = az[indices[1]:indices[2]]
 
@@ -89,10 +93,10 @@ plt.ylabel('Acceleration $(m / s^2)$');
 
 The phone registers simultaneously two accelerations:
 
-* That due to the lift's movement ($a$).
+* That due to the elevator's movement ($a$).
 * That due to the Earth's gravitational field ($g$).
 
-Despite we know that, in the Earth's surface, $g \approx -9.8 m/s^2$, we don't know anything about possible systematic errors of our device. Indeed, a quick look at our previous figure shows that the registered $g$ is slightly higher than $10$. In order to assess this problem, we'll estimate the measured value of $g$ as the mean value of our main time series.
+Despite we know that, in the Earth's surface, $g \approx 9.8 m/s^2$, we don't know anything about possible systematic errors of our device. Indeed, a quick look at our previous figure shows that the registered $g$ is slightly higher than $10 m/s^2$. In order to assess this problem, we'll estimate the measured value of $g$ as the mean value of our main time series.
 
 This gravitational acceleration is not relevant to the problem we want to solve, so we'll remove its effect by substracting its estimated value.
 
@@ -107,12 +111,18 @@ az_experiment_detrended = az_experiment - g
 The relationship between position ($x$), speed ($v$) and acceleration ($a$) is well known:
 
 $$v(t) = x'(t)$$
+
+and:
+
 $$a(t) = v'(t)$$
 
 Using anti derivatives we can go the other way around:
 
-$$v(t) = \int_{t_0}^t a(s)$$
-$$x(t) = \int_{t_0}^t v(s)$$
+$$v(t) = \int_{t_0}^t a(s) ds$$
+
+and:
+
+$$x(t) = \int_{t_0}^t v(s) ds$$
 
 
 ```python
@@ -155,3 +165,17 @@ plt.xlabel('Time $(s)$');
 
 
 ![png](./img/output_12_0.png)
+
+
+
+```python
+print('The estimated g is {0:.2f} (m/s^2).'.format(g))
+print('The travelled height is {0:.2f} (m).'.format(x.max()))
+print('The maximum speed is {0:.2f} (m/s).'.format(v.max()))
+print('The maximum acceleration is {0:.2f} (m/s^2).'.format(az_experiment_detrended.max()))
+```
+
+    The estimated g is 10.31 (m/s^2).
+    The travelled height is 74.30 (m).
+    The maximum speed is 4.01 (m/s).
+    The maximum acceleration is 0.93 (m/s^2).

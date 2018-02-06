@@ -1,3 +1,6 @@
+## Problem
+Using the smartphone's accelerometer inside an elevator, we want to estimate the speed and the height travelled. 
+
 ## Load libraries
 
 ```python

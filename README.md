@@ -110,20 +110,19 @@ az_experiment_detrended = az_experiment - g
 
 The relationship between position ($x$), speed ($v$) and acceleration ($a$) is well known:
 
-$$v(t) = x'(t)$$
+v(t) = x'(t)
 
 and:
 
-$$a(t) = v'(t)$$
+a(t) = v'(t)
 
 Using anti derivatives we can go the other way around:
 
-$$v(t) = \int_{t_0}^t a(s) ds$$
+<img src="https://latex.codecogs.com/gif.latex?v(t)=\int_{t_0}^ta(s)ds" /> 
 
 and:
 
-$$x(t) = \int_{t_0}^t v(s) ds$$
-
+<img src="https://latex.codecogs.com/gif.latex?x(t)=\int_{t_0}^tv(s)ds" /> 
 
 ```python
 # Approximate antiderivative of a

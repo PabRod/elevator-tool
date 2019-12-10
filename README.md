@@ -1,5 +1,7 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PabRod/elevator-tool/master)
+
 # Elevator tool
-By [Pablo Rodríguez-Sánchez](https://pabrod.github.io) [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-2855-940X)
+By [Pablo Rodríguez-Sánchez](https://pabrod.github.io) [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-2855-940X).
 
 ## Problem
 
@@ -180,3 +182,5 @@ print('The maximum acceleration is {0:.2f} (m/s^2).'.format(az_experiment_detren
     The travelled height is 74.30 (m).
     The maximum speed is 4.01 (m/s).
     The maximum acceleration is 0.93 (m/s^2).
+
+Run interactivelly in [Binder](https://mybinder.org/v2/gh/PabRod/elevator-tool/master)

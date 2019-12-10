@@ -1,4 +1,7 @@
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PabRod/elevator-tool/master)
+[![PabRod](https://img.shields.io/badge/Blog%20post-English-lightgrey)](https://pabrod.github.io/elevator-en.html)
+[![Naukas](https://img.shields.io/badge/Blog%20post-Spanish-red)](https://fuga.naukas.com/2018/02/06/un-empollon-en-mi-ascensor/)
 
 # Elevator tool
 By [Pablo Rodríguez-Sánchez](https://pabrod.github.io) [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-2855-940X).
